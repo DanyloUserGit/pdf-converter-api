@@ -13,7 +13,8 @@ router.post("/", upload.single("file"), async (req, res) => {
 
   try {
     const filePath = path.resolve(req.file.path);
-    const fileType = await detectFileType(filePath);
+    const fileType = await detectFileType(filePath, req.file.originalname);
+
     if (!fileType) throw new Error("Error in file type detection");
     const outputBuffer = await convertToPDF(filePath, fileType);
 
