@@ -30,5 +30,8 @@ router.post("/", upload.single("file"), async (req, res) => {
     fs.unlinkSync(req.file.path);
   }
 });
+router.get("/ping", (req, res) => {
+  res.status(200).send("pong");
+});
 
 export default router;
