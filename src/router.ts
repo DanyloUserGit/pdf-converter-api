@@ -9,7 +9,7 @@ const router = express.Router();
 const upload = multer({ dest: "uploads/" });
 
 router.post("/", upload.single("file"), async (req, res) => {
-  if (!req.file) return res.status(400).send("No file uploaded");
+  if (!req.file) return res.status(200).send("Error: No file uploaded");
 
   try {
     const filePath = path.resolve(req.file.path);
